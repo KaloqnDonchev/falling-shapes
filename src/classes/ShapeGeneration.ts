@@ -1,5 +1,5 @@
 import { hslToHex, random } from "../utils";
-import { MIN_SHAPE_SIZE, MAX_SHAPE_SIZE, CANVAS_WIDTH } from '../constants';
+import { MIN_SHAPE_SIZE, MAX_SHAPE_SIZE } from '../constants';
 import { Shape } from "./Shape";
 import type { Geometry } from "../interfaces/Geometry";
 import type { ShapeType } from "../types";
@@ -10,14 +10,9 @@ import { EllipseGeometry } from "./EllipseGeometry";
 const SHAPE_TYPES: ShapeType[] = [ 'triangle', 'square', 'pentagon', 'hexagon', 'circle', 'ellipse', 'star'];
 
 export class ShapeGeneration {
-    private readonly canvasWidth: number;
 
-    constructor() {
-        this.canvasWidth = CANVAS_WIDTH;
-    }
-
-    createRandom(): Shape {
-        const x = random(MAX_SHAPE_SIZE, this.canvasWidth - MAX_SHAPE_SIZE);
+    createRandom(canvasWidth: number): Shape {
+        const x = random(MAX_SHAPE_SIZE, canvasWidth - MAX_SHAPE_SIZE);
         const y = -MAX_SHAPE_SIZE;
         return new Shape(x, y, this.createGeometry(this.randomType()), this.randomColor());
     }
