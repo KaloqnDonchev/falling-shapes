@@ -1,11 +1,13 @@
 import { Application } from "pixi.js"
 import { Shape } from './classes/Shape';
 import { EllipseGeometry } from "./classes/EllipseGeometry";
+import { PolygonGeometry } from "./classes/PolygonGeometry";
 
 (async () => {
     const GRAVITY = 200;
+    const CANVAS_WIDTH = 800;
     const radius = 30;
-    const x = Math.random() * 800;
+    const x = Math.random() * CANVAS_WIDTH - radius;
 
     const app = new Application();
     
@@ -18,7 +20,7 @@ import { EllipseGeometry } from "./classes/EllipseGeometry";
     
     container.appendChild(app.canvas);
 
-    const shape = new Shape(x, -radius, new EllipseGeometry(100, 70), 505050); // minus to spawn above canvas
+    const shape = new Shape(x, -radius, new PolygonGeometry([100, 200 , 200, 200, 70, 60,]), 505050); // minus to spawn above canvas
 
     app.stage.addChild(shape.view);
 
