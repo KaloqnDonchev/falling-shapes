@@ -97,3 +97,57 @@ table {
     font-weight: 600;
     color: #f1f5f9;
 }
+
+#controls {
+    display: flex;
+    gap: 12px;
+}
+
+.control {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 16px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.control-label {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.stepper-value {
+    font-size: 22px;
+    font-weight: 600;
+    color: #f1f5f9;
+}
+
+.stepper button {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+    color: #f1f5f9;
+    background: #334155;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.stepper button:hover {
+    background: #475569;
+}
+
+.stepper button:active {
+    background: #64748b;
+}

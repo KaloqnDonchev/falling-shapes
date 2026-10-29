@@ -2,33 +2,36 @@ import { Container } from 'pixi.js';
 import type { Shape } from './Shape';
 import type { ShapeGeneration } from './ShapeGeneration';
 import { MAX_SHAPE_SIZE } from '../constants';
+import type { Settings } from './Settings';
 
 export class Spawner {
     private readonly shapes: Shape[] = [];
     private readonly layer: Container;
     private readonly shapeGeneration: ShapeGeneration;
     private elapsedMS = 0;
-    private readonly spawnIntervalMS = 1000; // 1 shape per second
+    private readonly settings: Settings;
 
-    constructor(layer: Container, shapeGeneration: ShapeGeneration) {
+    constructor(layer: Container, shapeGeneration: ShapeGeneration, settings: Settings) {
         this.layer = layer;
-        this.shapeGeneration = shapeGeneration;        
+        this.shapeGeneration = shapeGeneration;
+        this.settings = settings;       
     }
 
     spawnAt(x: number, y: number): void {
         this.add(this.shapeGeneration.createAt(x, y));
     }
 
-    update(deltaMS: number, gravity: number, width: number, height: number): void {
+    update(deltaMS: number, width: number, height: number): void {
+        const intervalMS = 1000 / this.settings.spawnRate;
         this.elapsedMS += deltaMS;
-        while (this.elapsedMS >= this.spawnIntervalMS) {
-            this.elapsedMS -= this.spawnIntervalMS;
+        while (this.elapsedMS >= intervalMS) {
+            this.elapsedMS -= intervalMS;
             this.add(this.shapeGeneration.createRandom(width));
         }
 
         for (let i = this.shapes.length - 1; i >= 0; i--) { // in reverse so that it does not skip forward to next index
             const shape = this.shapes[i];
-            shape.update(deltaMS, gravity);
+            shape.update(deltaMS, this.settings.gravity);
             if (shape.y - MAX_SHAPE_SIZE > height) { // is the shape top edge below canvas
                 this.remove(shape);
             }

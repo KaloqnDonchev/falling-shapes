@@ -2,10 +2,10 @@ import { Application, Container, Graphics } from "pixi.js"
 import { ShapeGeneration } from "./classes/ShapeGeneration";
 import { Spawner } from "./classes/Spawner";
 import { Stats } from "./classes/Stats";
+import { Settings } from "./classes/Settings";
+import { Controls } from "./classes/Controls";
 
 (async () => {
-    const GRAVITY = 200;
-
     const app = new Application();
     
     const container = document.getElementById("container");
@@ -24,7 +24,7 @@ import { Stats } from "./classes/Stats";
     app.stage.addChild(shape.view);
 
     app.ticker.add((ticker) => {
-        shape.update(ticker.deltaMS, GRAVITY);
+        shape.update(ticker.deltaMS, settings.gravity);
     });
 
     // auto shape generation + onclick
@@ -43,7 +43,9 @@ import { Stats } from "./classes/Stats";
     drawMask();
     app.renderer.on('resize', drawMask);
 
-    const spawner = new Spawner(layer, new ShapeGeneration());
+    const settings = new Settings();
+    new Controls(settings);
+    const spawner = new Spawner(layer, new ShapeGeneration(), settings);
 
     app.stage.eventMode = 'static';
     app.stage.hitArea = app.screen;
@@ -62,7 +64,7 @@ import { Stats } from "./classes/Stats";
     const stats = new Stats(countEl, areaEl);
 
     app.ticker.add((ticker) => {
-        spawner.update(ticker.deltaMS, GRAVITY, app.screen.width, app.screen.height);
+        spawner.update(ticker.deltaMS, app.screen.width, app.screen.height);
         stats.update(spawner.count, spawner.totalArea);
     });
 })();

@@ -19,6 +19,24 @@
             </div>
         </div>
         <div id="container"></div>
+        <div id="controls">
+            <div class="control">
+                <span class="control-label">Shapes / second</span>
+                <div class="stepper">
+                    <button id="rate-minus" type="button" aria-label="Decrease shapes per second">−</button>
+                    <span class="stepper-value" id="rate-value">1</span>
+                    <button id="rate-plus" type="button" aria-label="Increase shapes per second">+</button>
+                </div>
+            </div>
+            <div class="control">
+                <span class="control-label">Gravity</span>
+                <div class="stepper">
+                    <button id="gravity-minus" type="button" aria-label="Decrease gravity">−</button>
+                    <span class="stepper-value" id="gravity-value">200</span>
+                    <button id="gravity-plus" type="button" aria-label="Increase gravity">+</button>
+                </div>
+            </div>
+        </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
 </body>
