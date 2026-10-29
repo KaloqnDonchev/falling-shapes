@@ -15,4 +15,12 @@ export class Shape {
     update(deltaMS: number, gravity: number): void {
         this.view.y += gravity * (deltaMS / 1000);
     }
+
+    get y(): number {
+        return this.view.y;
+    }
+
+    destroy(): void {
+        this.view.destroy();
+    }
 }

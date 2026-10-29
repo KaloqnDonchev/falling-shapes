@@ -17,6 +17,10 @@ export class ShapeGeneration {
         return new Shape(x, y, this.createGeometry(this.randomType()), this.randomColor());
     }
 
+    createAt(x: number, y: number): Shape {
+        return new Shape(x, y, this.createGeometry(this.randomType()), this.randomColor());
+    }
+
     private randomType(): ShapeType {
         return SHAPE_TYPES[Math.floor(Math.random() * SHAPE_TYPES.length)];
     }
