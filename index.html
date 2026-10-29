@@ -7,7 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="container"></div>
+    <div id="app">
+        <div id="stats">
+            <div class="stat">
+                <span class="stat-label">Shapes</span>
+                <span class="stat-value" id="stat-count">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Surface area</span>
+                <span class="stat-value"><span id="stat-area">0</span> px²</span>
+            </div>
+        </div>
+        <div id="container"></div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
