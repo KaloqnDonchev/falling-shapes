@@ -1,4 +1,4 @@
-import { Application, Container } from "pixi.js"
+import { Application, Container, Graphics } from "pixi.js"
 import { ShapeGeneration } from "./classes/ShapeGeneration";
 import { Spawner } from "./classes/Spawner";
 
@@ -29,6 +29,18 @@ import { Spawner } from "./classes/Spawner";
     // auto shape generation + onclick
     const layer = new Container(); // holds all shapes
     app.stage.addChild(layer);
+
+    // masking the play area
+    const mask = new Graphics();
+    app.stage.addChild(mask);
+    layer.mask = mask;
+
+    function drawMask(): void {
+        mask.clear().rect(0, 0, app.screen.width, app.screen.height).fill(0xffffff);
+    }
+
+    drawMask();
+    app.renderer.on('resize', drawMask);
 
     const spawner = new Spawner(layer, new ShapeGeneration());
 
