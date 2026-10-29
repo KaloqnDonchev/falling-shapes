@@ -29,8 +29,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-        min-height: 100vh;
-
+    min-height: 100vh;
+    background: #5270b7;
+    font-family: system-ui, sans-serif;
 }
 
 ol, ul {
@@ -64,10 +65,35 @@ table {
     max-height: 60dvh;
     border: 2px solid #333;
     overflow: hidden;
+    border: 2px solid #334155;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 #stats {
     display: flex;
-    gap: 16px;
-    font-family: sans-serif;
+    gap: 12px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 120px;
+    padding: 10px 16px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.stat-value {
+    font-size: 22px;
+    font-weight: 600;
+    color: #f1f5f9;
 }

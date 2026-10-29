@@ -9,8 +9,14 @@
 <body>
     <div id="app">
         <div id="stats">
-            <span>Shapes: <span id="stat-count">0</span></span>
-            <span>Area: <span id="stat-area">0</span> px²</span>
+            <div class="stat">
+                <span class="stat-label">Shapes</span>
+                <span class="stat-value" id="stat-count">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label">Surface area</span>
+                <span class="stat-value"><span id="stat-area">0</span> px²</span>
+            </div>
         </div>
         <div id="container"></div>
     </div>
