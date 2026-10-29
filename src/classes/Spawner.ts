@@ -54,4 +54,16 @@ export class Spawner {
         this.shapes.splice(index, 1);
         shape.destroy(); // frees memory
     }
+
+    public get count(): number {
+        return this.shapes.length;
+    }
+
+    get totalArea(): number {
+        let sum = 0;
+        for (const shape of this.shapes) {
+            sum += shape.area;
+        }
+        return sum;
+    }
 }

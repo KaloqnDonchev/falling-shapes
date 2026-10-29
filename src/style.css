@@ -52,10 +52,22 @@ table {
 	border-spacing: 0;
 }
 
+#app {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 #container {
     width: min(100vw - 24px, 800px);
     aspect-ratio: 4 / 3;
     max-height: 60dvh;
     border: 2px solid #333;
     overflow: hidden;
+}
+
+#stats {
+    display: flex;
+    gap: 16px;
+    font-family: sans-serif;
 }

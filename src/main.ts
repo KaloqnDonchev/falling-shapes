@@ -1,6 +1,7 @@
 import { Application, Container, Graphics } from "pixi.js"
 import { ShapeGeneration } from "./classes/ShapeGeneration";
 import { Spawner } from "./classes/Spawner";
+import { Stats } from "./classes/Stats";
 
 (async () => {
     const GRAVITY = 200;
@@ -50,7 +51,18 @@ import { Spawner } from "./classes/Spawner";
         spawner.spawnAt(event.global.x, event.global.y);
     });
 
+    // stats fields
+    const countEl = document.getElementById('stat-count');
+    const areaEl = document.getElementById('stat-area');
+
+    if (!countEl || !areaEl) {
+        throw new Error('Stats elements not found');
+    }
+
+    const stats = new Stats(countEl, areaEl);
+
     app.ticker.add((ticker) => {
         spawner.update(ticker.deltaMS, GRAVITY, app.screen.width, app.screen.height);
+        stats.update(spawner.count, spawner.totalArea);
     });
 })();
