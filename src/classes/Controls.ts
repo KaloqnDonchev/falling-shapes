@@ -1,6 +1,6 @@
-import type { Settings } from './Settings';
+import type { Settings } from './Settings.ts';
 
-function getElement(id: string): HTMLElement {
+function getElement(id: string): HTMLElement { // to check if the element is missing
     const element = document.getElementById(id);
     if (!element) {
         throw new Error(`Element #${id} not found`);

@@ -1,5 +1,5 @@
 import { Graphics } from 'pixi.js';
-import type { Geometry } from '../interfaces/Geometry';
+import type { Geometry } from '../interfaces/Geometry.ts';
 
 export class Shape {
     public readonly view: Graphics;
@@ -13,7 +13,7 @@ export class Shape {
     }
 
     update(deltaMS: number, gravity: number): void {
-        this.view.y += gravity * (deltaMS / 1000);
+        this.view.y += gravity * (deltaMS / 1000); // constant gravity * ellapsed seconds
     }
 
     get y(): number {

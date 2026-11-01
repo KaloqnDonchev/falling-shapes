@@ -1,9 +1,9 @@
 import { Application, Container, Graphics } from "pixi.js"
-import { ShapeGeneration } from "./classes/ShapeGeneration";
-import { Spawner } from "./classes/Spawner";
-import { Stats } from "./classes/Stats";
-import { Settings } from "./classes/Settings";
-import { Controls } from "./classes/Controls";
+import { ShapeGeneration } from "./classes/ShapeGeneration.ts";
+import { Spawner } from "./classes/Spawner.ts";
+import { Stats } from "./classes/Stats.ts";
+import { Settings } from "./classes/Settings.ts";
+import { Controls } from "./classes/Controls.ts";
 
 (async () => {
     const app = new Application();
@@ -16,16 +16,6 @@ import { Controls } from "./classes/Controls";
     await app.init({ resizeTo: container, background: 'white', resolution: window.devicePixelRatio || 1, autoDensity: true });
     
     container.appendChild(app.canvas);
-
-    // shape generation
-    const createShape = new ShapeGeneration();
-    const shape = createShape.createRandom(app.screen.width);
-
-    app.stage.addChild(shape.view);
-
-    app.ticker.add((ticker) => {
-        shape.update(ticker.deltaMS, settings.gravity);
-    });
 
     // auto shape generation + onclick
     const layer = new Container(); // holds all shapes
@@ -64,7 +54,7 @@ import { Controls } from "./classes/Controls";
     const stats = new Stats(countEl, areaEl);
 
     app.ticker.add((ticker) => {
-        spawner.update(ticker.deltaMS, app.screen.width, app.screen.height);
+        spawner.update(ticker.deltaMS, app.screen.width, app.screen.height); // ticks every frame
         stats.update(spawner.count, spawner.totalArea);
     });
 })();

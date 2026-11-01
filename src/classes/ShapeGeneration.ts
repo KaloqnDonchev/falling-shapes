@@ -1,11 +1,11 @@
-import { hslToHex, random } from "../utils";
-import { MIN_SHAPE_SIZE, MAX_SHAPE_SIZE } from '../constants';
-import { Shape } from "./Shape";
-import type { Geometry } from "../interfaces/Geometry";
-import type { ShapeType } from "../types";
-import { PolygonGeometry } from "./PolygonGeometry";
-import { CircleGeometry } from "./CircleGeometry";
-import { EllipseGeometry } from "./EllipseGeometry";
+import { hslToHex, random } from "../utils.ts";
+import { MIN_SHAPE_SIZE, MAX_SHAPE_SIZE } from '../constants.ts';
+import { Shape } from "./Shape.ts";
+import type { Geometry } from "../interfaces/Geometry.ts";
+import type { ShapeType } from "../types.ts";
+import { PolygonGeometry } from "./PolygonGeometry.ts";
+import { CircleGeometry } from "./CircleGeometry.ts";
+import { EllipseGeometry } from "./EllipseGeometry.ts";
 
 const SHAPE_TYPES: ShapeType[] = [ 'triangle', 'square', 'pentagon', 'hexagon', 'circle', 'ellipse', 'star'];
 

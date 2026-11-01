@@ -9,6 +9,7 @@ export class Stats {
         this.areaElement = areaElement;
     }
 
+    // function is called every frame so DOM manipulation is done only when needed
     update(count: number, area: number): void {
         const roundedArea = Math.round(area);
 

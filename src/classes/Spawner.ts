@@ -1,8 +1,8 @@
 import { Container } from 'pixi.js';
-import type { Shape } from './Shape';
-import type { ShapeGeneration } from './ShapeGeneration';
-import { MAX_SHAPE_SIZE } from '../constants';
-import type { Settings } from './Settings';
+import type { Shape } from './Shape.ts';
+import type { ShapeGeneration } from './ShapeGeneration.ts';
+import { MAX_SHAPE_SIZE } from '../constants.ts';
+import type { Settings } from './Settings.ts';
 
 export class Spawner {
     private readonly shapes: Shape[] = [];
@@ -39,7 +39,7 @@ export class Spawner {
     }
 
     private add(shape: Shape): void {
-        shape.view.eventMode = 'static';
+        shape.view.eventMode = 'static'; // allows interaction
         shape.view.cursor = 'pointer';
         shape.view.on('pointerdown', (event) => {
             event.stopPropagation(); // only removes the clicked one, stopping previous events

@@ -1,5 +1,5 @@
 import type { Graphics } from "pixi.js";
-import type { Geometry } from "../interfaces/Geometry";
+import type { Geometry } from "../interfaces/Geometry.ts";
 
 export class CircleGeometry implements Geometry {
     private readonly radius: number;
